@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens extracted from Figma — "oxxoglass french" (node 31:2927).
+ * Figma blur radii are halved for CSS (Figma radius ≈ 2 × CSS blur()).
+ */
+@theme {
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-brand: #fa5b2e;
+  --color-brand-light: #ff7a54;
+  --color-brand-glow: #ff6033;
+  --color-brand-soft: #ffd1c4;
+  --color-brand-amber: #ffa21f;
+  --color-brand-deep: #94361b;
+  --color-brand-shadow: #ff977a;
+
+  --color-ink: #232323;
+  --color-night: #1a0e1a;
+  --color-graphite: #272727;
+  --color-muted: #696d76;
+  --color-paper: #fcfcfc;
+  --color-surface: #f6f6f6;
+  --color-surface-strong: #f4f4f4;
+  --color-line: #eaeaea;
+  --color-line-strong: #d2d2d2;
+  --color-line-dark: #5b5b5b;
+  --color-glass-border: #efefef;
+  --color-panel-border: #cdcdcd;
+
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-epicpro), var(--font-display-fallback), var(--font-roboto), sans-serif;
+  --font-inter: var(--font-inter-face), var(--font-roboto), sans-serif;
+  --font-manrope: var(--font-manrope-face), var(--font-roboto), sans-serif;
+
+  /* Type scale — [size, line-height] pairs from the Figma text styles */
+  --text-xs: 0.875rem;
+  --text-xs--line-height: 1.2;
+  --text-sm: 0.95375rem;
+  --text-sm--line-height: 1.2;
+  --text-base: 1rem;
+  --text-base--line-height: 1.2;
+  --text-title: 1.125rem;
+  --text-title--line-height: 1;
+  --text-cta: 1.24125rem;
+  --text-cta--line-height: 1.2;
+  --text-offer: 1.36375rem;
+  --text-offer--line-height: 1.2;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1;
+  --text-lead: 1.66875rem;
+  --text-lead--line-height: 1.2;
+  --text-offer-lg: 2.38625rem;
+  --text-offer-lg--line-height: 1.2;
+  --text-h2-sm: 3.456875rem;
+  --text-h2-sm--line-height: 1;
+  --text-h2: 3.625rem;
+  --text-h2--line-height: 1;
+  --text-hero: 4.875rem;
+  --text-hero--line-height: 1;
+  --text-watermark-sm: 6.77rem;
+  --text-watermark-sm--line-height: 1;
+  --text-number: 9.443rem;
+  --text-number--line-height: 1;
+  --text-watermark-md: 12.278rem;
+  --text-watermark-md--line-height: 1;
+  --text-watermark-lg: 24.009rem;
+  --text-watermark-lg--line-height: 1;
+
+  --container-content: 80rem;
+  --container-page: 90rem;
+  --breakpoint-page: 90rem;
+
+  --radius-field: 0.5rem;
+  --radius-card: 1rem;
+  --radius-offer: 1.419rem;
+  --radius-panel: 3rem;
+
+  --blur-tag: 8px;
+  --blur-glass: 9.5px;
+  --blur-object: 4.5px;
+  --blur-shadow: 5.35px;
+  --blur-glow: 43px;
+  --blur-glow-md: 52px;
+  --blur-form: 88px;
+  --blur-glow-xl: 180px;
+
+  --shadow-offer-card: 0 0 20.75px 0 var(--color-white);
+  --shadow-cta-inset: inset 0 0.83px 12.5px 0 var(--color-white);
+  --shadow-step-active: inset 0 4px 19.3px 0 var(--color-brand-shadow);
+  --shadow-card-hover: 0 24px 48px -24px rgb(35 35 35 / 0.25);
+
+  --ease-figma-snap: cubic-bezier(1, -0.012, 0, 0.992);
+  --ease-figma-out: cubic-bezier(0, 0, 0, 1.01);
+
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-pin-pulse: pin-pulse 2s ease-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glow-drift: glow-drift 1.6s var(--ease-figma-snap) infinite alternate;
+  --animate-ken-burns: ken-burns 14s ease-out both;
+  --animate-shine: shine 7s ease-in-out infinite;
+
+  @keyframes ken-burns {
+    from {
+      transform: scale(1.12);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes shine {
+    0%,
+    80% {
+      transform: translateX(-120%) skewX(-20deg);
+    }
+    100% {
+      transform: translateX(220%) skewX(-20deg);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes pin-pulse {
+    0% {
+      transform: scale(0.5);
+      opacity: 0.9;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-14px) rotate(4deg);
+    }
+  }
+
+  @keyframes glow-drift {
+    from {
+      transform: translate(0, 0);
+    }
+    to {
+      transform: translate(12%, -10%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.5rem;
+  }
+
+  body {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility animation-delay-* {
+  animation-delay: calc(--value(integer) * 1ms);
+}
+
+@utility animate-paused {
+  animation-play-state: paused;
+}
