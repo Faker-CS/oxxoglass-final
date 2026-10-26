@@ -26,7 +26,7 @@ const offers = [
   },
   {
     id: "money",
-    image: { src: "/images/money.svg", width: 460, height: 421 },
+    image: { src: "/images/money.svg", width: 560, height: 480 },
     title: (
       <>
         De <span className="text-brand">200 €</span> À <span className="text-brand">400 €</span>
@@ -68,30 +68,35 @@ export function OfferCard() {
       >
         <div className="absolute inset-0 rounded-offer border-3 border-white/95 bg-brand-soft shadow-offer-card" />
 
-        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-16 z-10 h-60">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-24 z-20 h-80 overflow-hidden mask-b-from-65% mask-b-to-100%">
           <AnimatePresence mode="wait">
             <motion.div
               key={offer.id}
               className="absolute inset-0 origin-bottom"
-              initial={{ y: 90, scale: 0.7, rotate: -8 }}
-              animate={{ y: 0, scale: 1, rotate: 0 }}
-              exit={{  y: 70, scale: 0.8, rotate: 6 }}
-              transition={{ duration: 0.8, ease, delay: index === 0 && !hasCycled ? 0.6 : 0 }}
+              initial={{ y: 90, scale: 0.7 }}
+              animate={{ y: 0, scale: 1 }}
+              exit={{ y: 70, scale: 0.8 }}
+              transition={{ duration: 0.8, ease, delay: hasCycled ? 0 : 0.6 }}
             >
-              <div className="absolute inset-x-[10%] bottom-0 h-3/4 rounded-full bg-brand-amber/40 blur-glow-md" />
-              <Image
-                src={offer.image.src}
-                alt=""
-                width={offer.image.width}
-                height={offer.image.height}
-                priority={index === 0}
-                className="size-full object-contain relative object-bottom drop-shadow-[0_0_20px_var(--color-white)]"
-              />
+              <motion.div
+                className="size-full origin-bottom"
+                animate={{ rotate: [-8, 8, -8] }}
+                transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
+              >
+                <Image
+                  src={offer.image.src}
+                  alt=""
+                  width={offer.image.width}
+                  height={offer.image.height}
+                  priority={index === 0}
+                  className="size-full object-contain object-bottom drop-shadow-[0_0_25px_var(--color-white)]"
+                />
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 overflow-hidden rounded-offer">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-25 overflow-hidden rounded-offer">
           <Image
             src="/images/offer-card.svg"
             alt=""
